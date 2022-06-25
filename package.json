@@ -1,0 +1,24 @@
+{
+  "name": "Grafos1_Fipe",
+  "version": "1.0.0",
+  "description": "**Número da Lista**: 3<br> **Conteúdo da Disciplina**: Grafos 1<br>",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/projeto-de-algoritmos/Grafos1_Fipe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/projeto-de-algoritmos/Grafos1_Fipe/issues"
+  },
+  "homepage": "https://github.com/projeto-de-algoritmos/Grafos1_Fipe#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "socket.io": "^4.5.1"
+  }
+}
