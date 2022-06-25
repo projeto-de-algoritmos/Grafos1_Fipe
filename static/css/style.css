@@ -1,0 +1,37 @@
+.selects {
+    width: 40%;
+    margin-top: 2%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+header{
+    padding-bottom: 30px;
+}
+
+.navbar {
+    padding: 0%;
+}
+
+body {
+    background-image: url(../img/car.jpg);
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+}
+
+#botao {
+    background-color: #7d7d7d;
+    background-color: black;
+}
+
+.titulo{
+    color-interpolation: inherit;
+    color: black;
+}
+.section-principal {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+}
