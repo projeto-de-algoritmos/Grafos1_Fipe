@@ -25,14 +25,16 @@ function listarArrays() {
         'B',
         'C',
         'D',
-        'E'
+        'E',
+        '038003-2'
     ]
     var nome = ['Modelo',
         'Carro 1',
         'Carro 2',
         'Carro 3',
         'Carro 4',
-        'Carro 5'
+        'Carro 5',
+        'Integra GS 1.8'
     ];
    
     geraOptions(dinastia, idDinastia);

@@ -57,7 +57,7 @@ app.post("/linhagem", function (req, res) {
         var resposta = getNameData(graph.searchResult);
         var html = contarHitoria(resposta);
         res.render('../views/index', {
-            title: 'Linhagens', message: html
+            title: 'Searcher', message: html
         });
         //res.send(resposta);} 
     }
@@ -66,7 +66,7 @@ app.post("/linhagem", function (req, res) {
         var resposta2 = getNameData(graph.searchResult);
         var html = contarHitoria(resposta2);
         res.render('../views/index', {
-            title: 'Linhagens',
+            title: 'Searcher',
             message: html
         });
         // res.send(resposta2);
@@ -75,7 +75,7 @@ app.post("/linhagem", function (req, res) {
         var resposta2 = getNameData(graph.searchResult);
         var html = contarHitoria(resposta2);
         res.render('../views/index', {
-            title: 'Linhagens',
+            title: 'Searcher',
             message: html
         });
 
@@ -84,7 +84,7 @@ app.post("/linhagem", function (req, res) {
         var resposta2 = (getNameData(graph.searchResult));
         var html = contarHitoria(resposta2);
         res.render('../views/index', {
-            title: 'Linhagens',
+            title: 'Searcher',
             message: html
         });
     }
@@ -93,7 +93,7 @@ app.post("/linhagem", function (req, res) {
         var resposta2 = (getNameData(twoElementSearch([dinastia, causa], "bfs")))
         var html = contarHitoria(resposta2);
         res.render('../views/index', {
-            title: 'Linhagens',
+            title: 'Searcher',
             message: html
         });
 
@@ -101,14 +101,14 @@ app.post("/linhagem", function (req, res) {
         var resposta2 = (getNameData(twoElementSearch([dinastia, cidade], "bfs")))
         var html = contarHitoria(resposta2);
         res.render('../views/index', {
-            title: 'Linhagens',
+            title: 'Searcher',
             message: html
         });
     } else if (dinastia == null || dinastia == 'Dinastia') {
         var resposta2 = (getNameData(twoElementSearch([causa, cidade], "bfs")))
         var html = contarHitoria(resposta2);
         res.render('../views/index', {
-            title: 'Linhagens',
+            title: 'Searcher',
             message: html
         });
     }
@@ -117,7 +117,7 @@ app.post("/linhagem", function (req, res) {
         var resposta2 = (getNameData(graph.searchResult));
         var html = contarHitoria(resposta2);
         res.render('../views/index', {
-            title: 'Linhagens',
+            title: 'Searcher',
             message: html
         });
     }
@@ -131,7 +131,8 @@ function contarHitoria(resposta2) {
         html += " - Modelo: " + resposta2[i].Name;
         html += " - Codigo FIPE: " + resposta2[i].Codigo;
         html += " - Marca: " + resposta2[i].Marca;
-        
+        html += " - Tipo: " + resposta2[i].Tipo;
+        html += " - Valor: $" + resposta2[i].Valor;
     }
 
     return html;

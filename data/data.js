@@ -5,7 +5,8 @@ module.exports = {
         'Carro 2',
         'Carro 3',
         'Carro 4',
-        'Carro 5'
+        'Carro 5',
+        'Integra GS 1.8'
     ],
     BirthCity: [
         '',
@@ -19,7 +20,8 @@ module.exports = {
         'B',
         'C',
         'D',
-        'E'
+        'E',
+        '038003-2'
     ],
     Cause: [
         '',
