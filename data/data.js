@@ -1,12 +1,31 @@
+
 module.exports = {
-    modelo: [
+    Name: [
         'Carro 1',
         'Carro 2',
-        'Carro 3'
+        'Carro 3',
+        'Carro 4',
+        'Carro 5'
     ],
-    codigo: [
-        '1',
-        '2',
-        '3'
+    BirthCity: [
+        '',
+        '',
+        '',
+        '',
+        ''
+    ],
+    Dynasty: [
+        'A',
+        'B',
+        'C',
+        'D',
+        'E'
+    ],
+    Cause: [
+        '',
+        '',
+        '',
+        '',
+        ''
     ]
 };
