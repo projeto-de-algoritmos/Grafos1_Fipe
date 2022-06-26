@@ -5,13 +5,7 @@ module.exports = class Graph {
         this.adjacent = {};
         this.edges = 0;
         this.searchResult = [];
-        this.jsonData; // Adicionar JSON dos dados do carro
-    }
-
-    addNode(data) {
-        data.forEach((element) => {
-            this.addVertex(element);
-        });
+        this.jsonData = JSON.parse(fs.readFileSync("./data/carros.json"));
     }
 
     addVertex(v) {
@@ -20,16 +14,23 @@ module.exports = class Graph {
     }
 
     addEdge(v, w) {
+        console.log(this.adjacent[v])
         this.adjacent[v].push(w);
         this.adjacent[w].push(v);
         this.edges++;
+    }
+
+    addNode(data) {
+        data.forEach((element) => {
+            this.addVertex(element);
+        });
     }
 
     generateGraph(data, type) {
         for (let i = 0; i < data.length; i++) {
             for (let j = 0; j < this.jsonData.length; j++) {
                 if (this.jsonData[j][type] === data[i]) {
-                    this.addEdge(this.jsonData[j].Name, data[i])
+                    this.addEdge(this.jsonData[j].modelo, data[i])
                 }
             }
         }
@@ -61,18 +62,29 @@ module.exports = class Graph {
             }
         }
     }
-    dfsNameSearch(goal, root = this.vertices[0], visited = new Set()) {
+    dfsModeloSearch(goal, root = this.vertices[0], visited = new Set()) {
         visited.add(root);
+        
         const values = this.adjacent[root];
-
+        
         for (const value of values) {
             if (value === goal && this.searchResult.indexOf(value) === -1) {
                 this.searchResult = [goal]
             } if (!visited.has(value)) {
-                this.dfsNameSearch(goal, value, visited);
+                this.dfsModeloSearch(goal, value, visited);
             }
         }
+    }
 
+    searchGraphSelect(goal, searchMethod) {
+        switch (searchMethod) {
+            case 'bfs':
+                this.bfsValuesSearch(goal);
+                break;
+            case 'dfs':
+                this.dfsModeloSearch(goal);
+                break;
+        }
     }
 
     arrayEquals(a, b) {
@@ -80,16 +92,5 @@ module.exports = class Graph {
             Array.isArray(b) &&
             a.length === b.length &&
             a.every((val, index) => val === b[index]);
-    }
-    
-    searchGraphSelect(goal, searchMethod) {
-        switch (searchMethod) {
-            case 'bfs':
-                this.bfsValuesSearch(goal);
-                break;
-            case 'dfs':
-                this.dfsNameSearch(goal);
-                break;
-        }
     }
 }
