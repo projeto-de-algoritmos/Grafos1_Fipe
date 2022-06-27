@@ -57,7 +57,13 @@ app.post("/searcher", function (req, res) {
         var resposta = getNameData(graph.searchResult);
         var html = resultado(resposta);
         res.render('../views/index', {
-            title: 'Searcher', message: html
+            title: 'Searcher', 
+            index: html.index, 
+            modelo: html.modelo, 
+            codigo: html.codigo, 
+            marca: html.marca, 
+            tipo: html.tipo, 
+            valor: html.valor
         });
         //res.send(resposta);} 
     } 
@@ -69,23 +75,28 @@ app.post("/searcher", function (req, res) {
         //console.log(resposta)
         var html = resultado(resposta);
         res.render('../views/index', {
-            title: 'Searcher',
-            message: html
+            title: 'Searcher', 
+            index: html.index, 
+            modelo: html.modelo, 
+            codigo: html.codigo, 
+            marca: html.marca, 
+            tipo: html.tipo, 
+            valor: html.valor
         });
         // res.send(resposta);
     }
 })
 //
 function resultado(resposta) {
-    var html = " ";
+    var html = {};
     for (var i = 0; i < resposta.length; i++) {
         //console.log(resposta[i].Name + '\n');
-        html += "Carrro encontrado no index: " + resposta[i].Index;
-        html += " - Modelo: " + resposta[i].Name;
-        html += " - Codigo FIPE: " + resposta[i].Codigo;
-        html += " - Marca: " + resposta[i].Marca;
-        html += " - Tipo: " + resposta[i].Tipo;
-        html += " - Valor: $" + resposta[i].Valor;
+        html.index = "Carrro encontrado no index: " + resposta[i].Index;
+        html.modelo = " - Modelo: " + resposta[i].Name;
+        html.codigo = " - Codigo FIPE: " + resposta[i].Codigo;
+        html.marca = " - Marca: " + resposta[i].Marca;
+        html.tipo = " - Tipo: " + resposta[i].Tipo;
+        html.valor = " - Valor: $" + resposta[i].Valor;
     }
 
     return html;
