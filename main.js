@@ -47,92 +47,45 @@ let getNameData = (data) => {
 
 
 app.set('view engine', 'pug')
-app.post("/linhagem", function (req, res) {
-    let dinastia = req.body.dinastia;
-    let nome = req.body.nome;
-    let cidade = req.body.cidade;
-    let causa = req.body.causa;
-    if (nome != null && nome != 'Nome') {
-        graph.searchGraphSelect(nome, "dfs");
+app.post("/searcher", function (req, res) {
+
+    let codigo = req.body.codigo;
+    let modelo = req.body.modelo;
+
+    if (modelo) {
+        graph.searchGraphSelect(modelo, "dfs");
         var resposta = getNameData(graph.searchResult);
-        var html = contarHitoria(resposta);
+        var html = resultado(resposta);
         res.render('../views/index', {
             title: 'Searcher', message: html
         });
         //res.send(resposta);} 
-    }
-    else if ((cidade == null || cidade == 'Cidade natal') && (causa == null || causa == 'Causa da morte')) {
-        graph.searchGraphSelect(dinastia, "bfs");
-        var resposta2 = getNameData(graph.searchResult);
-        var html = contarHitoria(resposta2);
+    } 
+    else if (codigo) {
+        var index = data.Dynasty.indexOf(codigo, 0)
+        var modeloCarro = data.Name[index]
+        graph.searchGraphSelect(modeloCarro, "dfs");
+        var resposta = getNameData(graph.searchResult);
+        //console.log(resposta)
+        var html = resultado(resposta);
         res.render('../views/index', {
             title: 'Searcher',
             message: html
         });
-        // res.send(resposta2);
-    } else if ((causa == null || causa == 'Causa da morte') && (dinastia == null || dinastia == 'Dinastia')) {
-        graph.searchGraphSelect(cidade, "bfs");
-        var resposta2 = getNameData(graph.searchResult);
-        var html = contarHitoria(resposta2);
-        res.render('../views/index', {
-            title: 'Searcher',
-            message: html
-        });
-
-    } else if ((cidade == null || cidade == 'Cidade natal') && (dinastia == null || dinastia == 'Dinastia')) {
-        graph.searchGraphSelect(causa, "bfs");
-        var resposta2 = (getNameData(graph.searchResult));
-        var html = contarHitoria(resposta2);
-        res.render('../views/index', {
-            title: 'Searcher',
-            message: html
-        });
-    }
-
-    else if (cidade == null || cidade == 'Cidade natal') {
-        var resposta2 = (getNameData(twoElementSearch([dinastia, causa], "bfs")))
-        var html = contarHitoria(resposta2);
-        res.render('../views/index', {
-            title: 'Searcher',
-            message: html
-        });
-
-    } else if (causa == null || causa == 'Causa da morte') {
-        var resposta2 = (getNameData(twoElementSearch([dinastia, cidade], "bfs")))
-        var html = contarHitoria(resposta2);
-        res.render('../views/index', {
-            title: 'Searcher',
-            message: html
-        });
-    } else if (dinastia == null || dinastia == 'Dinastia') {
-        var resposta2 = (getNameData(twoElementSearch([causa, cidade], "bfs")))
-        var html = contarHitoria(resposta2);
-        res.render('../views/index', {
-            title: 'Searcher',
-            message: html
-        });
-    }
-    else {
-        graph.searchGraphSelect([cidade, dinastia, causa], "bfs");
-        var resposta2 = (getNameData(graph.searchResult));
-        var html = contarHitoria(resposta2);
-        res.render('../views/index', {
-            title: 'Searcher',
-            message: html
-        });
+        // res.send(resposta);
     }
 })
 //
-function contarHitoria(resposta2) {
+function resultado(resposta) {
     var html = " ";
-    for (var i = 0; i < resposta2.length; i++) {
-        console.log(resposta2[i].Name + '\n');
-        html += "Carrro encontrado no index: " + resposta2[i].Index;
-        html += " - Modelo: " + resposta2[i].Name;
-        html += " - Codigo FIPE: " + resposta2[i].Codigo;
-        html += " - Marca: " + resposta2[i].Marca;
-        html += " - Tipo: " + resposta2[i].Tipo;
-        html += " - Valor: $" + resposta2[i].Valor;
+    for (var i = 0; i < resposta.length; i++) {
+        //console.log(resposta[i].Name + '\n');
+        html += "Carrro encontrado no index: " + resposta[i].Index;
+        html += " - Modelo: " + resposta[i].Name;
+        html += " - Codigo FIPE: " + resposta[i].Codigo;
+        html += " - Marca: " + resposta[i].Marca;
+        html += " - Tipo: " + resposta[i].Tipo;
+        html += " - Valor: $" + resposta[i].Valor;
     }
 
     return html;

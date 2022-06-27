@@ -1,7 +1,3 @@
-
-
-
-//gerar as op��es pro select
 function geraOptions(vet, id) {
 
     let optionSelect = document.getElementById(id)
@@ -17,10 +13,10 @@ function geraOptions(vet, id) {
 
 function listarArrays() {
 
-    var idDinastia = "select-dinastia";
-    var idNome = "select-nome";
+    var idCodigo = "select-codigo";
+    var idModelo = "select-modelo";
     
-    var nome = [
+    var modelo = [
         'Legend 3.2/3.5',
         'NSX 3.0',
         'MARRU\u00c1 2.8 12V 132cv TDI Diesel',
@@ -43,7 +39,7 @@ function listarArrays() {
         'Vantage Coupe 4.7 V8 425cv'
     ];
    
-    var dinastia = [
+    var codigo = [
         '038002-4',
         '038001-6',
         '060001-6',
@@ -66,8 +62,8 @@ function listarArrays() {
         '085002-0'
     ];
     
-    geraOptions(dinastia, idDinastia);
-    geraOptions(nome, idNome);
+    geraOptions(codigo, idCodigo);
+    geraOptions(modelo, idModelo);
     
 }
 
