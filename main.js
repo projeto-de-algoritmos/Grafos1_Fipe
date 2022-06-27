@@ -62,7 +62,7 @@ app.post("/searcher", function (req, res) {
         //res.send(resposta);} 
     } 
     else if (codigo) {
-        var index = data.Dynasty.indexOf(codigo, 0)
+        var index = data.Codigo.indexOf(codigo, 0)
         var modeloCarro = data.Name[index]
         graph.searchGraphSelect(modeloCarro, "dfs");
         var resposta = getNameData(graph.searchResult);
